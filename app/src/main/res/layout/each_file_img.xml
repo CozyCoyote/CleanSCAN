@@ -1,50 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/each_file_img"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="10dp"
-            android:background="@drawable/border_image">
+    <ImageView
+        android:id="@+id/each_file_screenshot"
+        android:layout_width="@dimen/page_thumbnail_width"
+        android:layout_height="@dimen/page_thumbnail_height"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        tools:src="@drawable/camera" />
 
-                <TextView
-                    android:id="@+id/each_pageno"
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:elevation="10px"
-                    android:textColor="@color/colorAccent"
-                    android:text="Page XXX"
-                    android:background="#CCFFFFFF"
-                    android:layout_alignBottom="@id/each_file_screenshot"
-                    android:gravity="center">
-                </TextView>
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="8dp"
+        android:elevation="10dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_menu_delete" />
 
-                <ImageView
-                    android:id="@+id/each_file_screenshot"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:gravity="center_horizontal">
-                </ImageView>
-
-        </androidx.cardview.widget.CardView>
-
-        <ImageView
-            android:id="@+id/each_file_delete"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:padding="2dp"
-            android:elevation="10px"
-            android:src="@drawable/ic_menu_delete"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="#608a1c44"
-            >
-        </ImageView>
-
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

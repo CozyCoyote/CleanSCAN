@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical">
 
     <com.google.android.material.button.MaterialButton
@@ -14,9 +13,9 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:background="@drawable/ic_round_rotate_left_24px"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/scanButton"
@@ -24,12 +23,9 @@
         android:layout_width="168dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_bottom_button"
-        android:background="@drawable/capsule_bg"
         android:drawableStart="@drawable/ic_outline_navigate_next_24px"
-        android:orientation="horizontal"
         android:padding="@dimen/bottom_bar_padding"
         android:text="@string/scan"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/rotateRight"
         app:layout_constraintStart_toEndOf="@+id/rotateLeft" />
@@ -41,18 +37,18 @@
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:background="@drawable/ic_round_rotate_right_24px"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/scanButton"
         android:layout_gravity="center"
-        tools:background="#200"
-        android:layout_margin="@dimen/scanPadding">
+        android:layout_margin="@dimen/scanPadding"
+        app:layout_constraintBottom_toTopOf="@id/scanButton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="#200">
 
         <FrameLayout
             android:id="@+id/sourceFrame"

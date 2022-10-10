@@ -1,6 +1,8 @@
 package com.scanlibrary
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -9,7 +11,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import com.scanlibrary.ScanActivity.Companion.EXTRA_RESUL_IMAGE_NAME
 import com.scanlibrary.databinding.ResultLayoutBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -55,8 +59,8 @@ class ImageFiltersFragment : Fragment() {
     }
 
     private fun init() = with(binding) {
-        original.setOnClickListener(originalClickListener())
-        magicColor.setOnClickListener(magicColorClickListener())
+        original.setOnClickListener(OriginalClickListener())
+        magicColor.setOnClickListener(MagicColorClickListener())
         grayMode.setOnClickListener(GrayButtonClickListener())
         BWMode.setOnClickListener(BWModeClickListener())
 
@@ -71,109 +75,26 @@ class ImageFiltersFragment : Fragment() {
             }
         }
 
-
-        doneButton.setOnClickListener(DoneButtonClickListener())
-
-        addBtn.setOnClickListener(AddButtonClickListener())
-
-//        val sd = Environment.getExternalStorageDirectory()
-//        val stagingDirPath = getString(R.string.base_staging_path)
-//        val stagingDir = File(sd, stagingDirPath)
-//        if (stagingDir.listFiles() != null && stagingDir.listFiles().isNotEmpty()) {
-//            pageNumber.text = (stagingDir.listFiles().size + 1).toString()
-//        } else {
-//            pageNumber.text = "1"
-//        }
-    }
-
-    //        Uri uri = getUri();
-//        try {
-//            original = Utils.getBitmap(getActivity(), uri);
-//
-//            final File sd = Environment.getExternalStorageDirectory();
-//            File fdelete = new File(sd, uri.getPath());
-//            boolean isDeleted = fdelete.delete();
-//
-//            //getActivity().getContentResolver().delete(uri, null, null);
-//            return original;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    val bitmap: Bitmap?
-//        private get() =//        Uri uri = getUri();
-//        try {
-//            original = Utils.getBitmap(getActivity(), uri);
-//
-//            final File sd = Environment.getExternalStorageDirectory();
-//            File fdelete = new File(sd, uri.getPath());
-//            boolean isDeleted = fdelete.delete();
-//
-//            //getActivity().getContentResolver().delete(uri, null, null);
-//            return original;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//            null
-
-
-    private inner class DoneButtonClickListener : View.OnClickListener {
-        override fun onClick(v: View) {
-            AsyncTask.execute {
-                try {
-//                        Intent data = new Intent();
-//                        Bitmap bitmap = transformed;
-//                        if (bitmap == null) {
-//                            bitmap = original;
-//                        }
-//                        Uri uri = Utils.getUri(getActivity(), bitmap);
-//                        data.putExtra(ScanConstants.SCANNED_RESULT, uri);
-//                        data.putExtra(ScanConstants.SCAN_MORE, false);
-//                        getActivity().setResult(Activity.RESULT_OK, data);
-//                        original.recycle();
-//                        System.gc();
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                dismissDialog();
-//                                getActivity().finish();
-//                            }
-//                        });
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
+        addBtn.setOnClickListener {
+            saveAndExit()
         }
+
     }
 
-    private inner class AddButtonClickListener : View.OnClickListener {
-        override fun onClick(v: View) {
-            AsyncTask.execute {
-                try {
-//                        Intent data = new Intent();
-//                        Bitmap bitmap = transformed;
-//                        if (bitmap == null) {
-//                            bitmap = original;
-//                        }
-//                        Uri uri = Utils.getUri(getActivity(), bitmap);
-//                        data.putExtra(ScanConstants.SCANNED_RESULT, uri);
-//                        data.putExtra(ScanConstants.SCAN_MORE, true);
-//                        getActivity().setResult(Activity.RESULT_OK, data);
-//
-//                        original.recycle();
-//                        System.gc();
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                dismissDialog();
-//                                getActivity().finish();
-//                            }
-//                        });
-                } catch (e: Exception) {
-                    e.printStackTrace()
+    fun saveAndExit() {
+        GlobalScope.launch(Dispatchers.Main) {
+            val intent = Intent()
+            withContext(Dispatchers.IO) {
+                val fileUri = createInternalFile(requireContext()).toUri()
+                context?.contentResolver?.openOutputStream(fileUri).use {
+                    (transformed ?: original)?.compress(Bitmap.CompressFormat.JPEG, 100, it)
                 }
+
+                intent.putExtra(EXTRA_RESUL_IMAGE_NAME, fileUri.lastPathSegment)
+                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
             }
+            activity?.setResult(Activity.RESULT_OK, intent)
+            activity?.finish()
         }
     }
 
@@ -188,7 +109,7 @@ class ImageFiltersFragment : Fragment() {
         }
     }
 
-    private inner class magicColorClickListener : View.OnClickListener {
+    private inner class MagicColorClickListener : View.OnClickListener {
         override fun onClick(v: View) {
             GlobalScope.launch(Dispatchers.Main) {
                 withContext(Dispatchers.IO) {
@@ -199,7 +120,8 @@ class ImageFiltersFragment : Fragment() {
         }
     }
 
-    private inner class originalClickListener : View.OnClickListener {
+
+    private inner class OriginalClickListener : View.OnClickListener {
         override fun onClick(v: View) {
             try {
                 transformed = original

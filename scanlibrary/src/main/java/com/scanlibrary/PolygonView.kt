@@ -14,6 +14,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.annotation.AttrRes
 import kotlin.math.abs
+import androidx.core.content.res.use
 
 /**
  * Created by jhansi on 28/03/15.

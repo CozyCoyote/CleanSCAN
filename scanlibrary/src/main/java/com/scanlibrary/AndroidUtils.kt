@@ -8,6 +8,7 @@ import android.graphics.PointF
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -52,10 +53,13 @@ fun calculateSampleSize(bitmapSize: Pair<Int, Int>, viewSize: Pair<Int, Int>): I
 }
 
 fun createStagingPath(context: Context): Uri {
-    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-    "".log("create dir: " + File(context.cacheDir, ScanConstants.STAGE_DIR).mkdir())
-    val file = File(context.cacheDir, "${ScanConstants.STAGE_DIR}/IMG_$timeStamp.jpg")
+    val file = createInternalFile(context)
     return FileProvider.getUriForFile(context, context.packageName + ".fileprovider", file)
+}
+
+fun createInternalFile(context: Context): File {
+    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+    return File(context.cacheDir, "IMG_$timeStamp.jpg")
 }
 
 inline fun <reified T> T.log(message: String) {

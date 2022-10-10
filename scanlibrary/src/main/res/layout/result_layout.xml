@@ -3,20 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="@android:color/white"
-    android:orientation="vertical">
-
-    <Button
-        android:id="@+id/doneButton"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="false"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/ic_outline_save_color_24px"
-        android:textColor="@android:color/white" />
+    android:background="@android:color/white" >
 
     <Button
         android:id="@+id/addBtn"
@@ -32,18 +19,6 @@
         android:padding="@dimen/bottom_bar_padding"
         android:text="@string/scan"
         android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/pageNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="@dimen/margin_bottom_button"
-        android:paddingRight="10dp"
-        android:paddingBottom="20dp"
-        android:text="1" />
 
     <LinearLayout
         android:id="@+id/topBar"

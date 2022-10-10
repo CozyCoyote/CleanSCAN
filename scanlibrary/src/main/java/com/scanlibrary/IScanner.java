@@ -8,8 +8,6 @@ import android.net.Uri;
  */
 public interface IScanner {
 
-    void onBitmapSelect(Uri uri);
-
     Bitmap getGrayBitmap(Bitmap bitmap);
 
     Bitmap getMagicColorBitmap(Bitmap bitmap);

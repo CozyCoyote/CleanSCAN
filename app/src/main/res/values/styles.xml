@@ -12,6 +12,7 @@
         <item name="android:windowExitTransition">@transition/fade</item>
         <item name="selection_indicator_color">@color/blue</item>
         <item name="selection_indicator_color_invalid">@color/orange</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
     </style>
 
     <style name="AppTheme.Splash">
@@ -25,6 +26,10 @@
         <item name="colorAccent">@android:color/white</item>
         <item name="android:windowEnterTransition">@transition/fade</item>
         <item name="android:windowExitTransition">@transition/slide</item>
+    </style>
+
+    <style name="AppButton" parent="@style/Widget.Material3.Button.ElevatedButton">
+        <item name="background">@drawable/capsule_bg</item>
     </style>
 
 </resources>

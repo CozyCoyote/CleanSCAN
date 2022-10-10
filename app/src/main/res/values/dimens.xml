@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="page_thumbnail_width">120dp</dimen>
+    <dimen name="page_thumbnail_height">168dp</dimen>
+
+</resources>

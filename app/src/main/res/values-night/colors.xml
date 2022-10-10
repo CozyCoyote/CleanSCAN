@@ -8,7 +8,7 @@
     <color name="white">#000000</color>
     <color name="tab_indicator_gray">#c0c0c0</color>
 
-    <color name="selection_indicator_color">@color/blue</color>
-    <color name="selection_indicator_color_invalid">@color/orange</color>
+<!--    <color name="selection_indicator_color">@color/blue</color>-->
+<!--    <color name="selection_indicator_color_invalid">@color/orange</color>-->
 
 </resources>

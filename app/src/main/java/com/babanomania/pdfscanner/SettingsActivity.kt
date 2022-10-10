@@ -28,7 +28,7 @@ class SettingsActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
     }
 
-    class SettingsFragment : PreferenceFragmentCompat() {
+    internal class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             findPreference<Preference>(getString(R.string.setting_theme_key))!!.onPreferenceChangeListener =
