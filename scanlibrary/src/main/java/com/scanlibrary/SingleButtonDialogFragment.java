@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 @SuppressLint("ValidFragment")
+@Deprecated
 public class SingleButtonDialogFragment extends DialogFragment {
 
     protected int positiveButtonTitle;

@@ -12,4 +12,16 @@
         <item>HIGHEST</item>
     </string-array>
 
+    <string-array name="theme_entries">
+        <item>Device default</item>
+        <item>Day</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

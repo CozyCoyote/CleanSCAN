@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/rotateLeft"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="false"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="@dimen/margin_bottom_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:background="@drawable/ic_round_rotate_left_24px"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/scanButton"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="175dp"
+        android:layout_width="168dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margin_bottom_button"
         android:background="@drawable/capsule_bg"
+        android:drawableStart="@drawable/ic_outline_navigate_next_24px"
         android:orientation="horizontal"
         android:padding="@dimen/bottom_bar_padding"
         android:text="@string/scan"
         android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
-        android:drawableStart="@drawable/ic_outline_navigate_next_24px"></Button>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rotateRight"
+        app:layout_constraintStart_toEndOf="@+id/rotateLeft" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/rotateRight"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:textColor="@android:color/white"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:background="@drawable/ic_round_rotate_right_24px"
-        android:layout_centerHorizontal="false"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="@dimen/margin_bottom_button" />
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/scanButton"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scanButton"
         android:layout_gravity="center"
+        tools:background="#200"
         android:layout_margin="@dimen/scanPadding">
 
         <FrameLayout
@@ -56,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/scanPadding">
+            android:layout_margin="@dimen/polygonViewCircleWidth">
 
             <ImageView
                 android:id="@+id/sourceImageView"
@@ -71,8 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:visibility="gone"></com.scanlibrary.PolygonView>
+            android:visibility="gone"
+            tools:background="#F00"
+            tools:visbility="visible" />
     </FrameLayout>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,4 +51,9 @@
     <string name="key_image_quality">IMAGE_QUALITY</string>
     <string name="value_image_quality">FAST</string>
 
+    <string name="setting_styling_header">Style</string>
+    <string name="setting_theme_title">Theme</string>
+    <string name="setting_theme_key">THEME_SHADE</string>
+    <string name="setting_theme_default">0</string>
+
 </resources>

@@ -19,4 +19,7 @@ public class ScanConstants {
     public final static String SELECTED_BITMAP = "selectedBitmap";
     public final static String SCAN_MORE = "scanMore";
     public final static String SAVE_PDF = "savePdf";
+
+    public final static String STAGE_DIR = "stage";
+
 }

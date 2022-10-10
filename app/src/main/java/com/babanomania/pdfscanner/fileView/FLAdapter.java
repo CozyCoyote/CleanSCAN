@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import androidx.appcompat.view.ActionMode;
 
-import android.os.FileUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,17 +25,11 @@ import com.babanomania.pdfscanner.persistance.DocumentViewModel;
 import com.babanomania.pdfscanner.utils.DialogUtil;
 import com.babanomania.pdfscanner.utils.DialogUtilCallback;
 import com.babanomania.pdfscanner.utils.FileIOUtils;
-import com.babanomania.pdfscanner.utils.FileWritingCallback;
-import com.babanomania.pdfscanner.utils.PDFWriterUtil;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FLAdapter extends RecyclerView.Adapter<FLViewHolder> {
 

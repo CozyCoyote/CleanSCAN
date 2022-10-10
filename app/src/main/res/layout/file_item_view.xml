@@ -1,77 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relativeLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:layout_height="?android:attr/listPreferredItemHeight">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDocIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:adjustViewBounds="true"
         android:contentDescription="Icon"
-        android:scaleType="centerInside"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_category_receipt" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/fileName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fontFamily="sans-serif-medium"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/categoryLabel"
+        app:layout_constraintStart_toEndOf="@+id/ivDocIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="file label" />
 
-        <TextView
-            android:id="@+id/fileName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="file label"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:fontFamily="sans-serif-light"
+        android:textSize="12sp"
+        app:drawableStartCompat="@drawable/ic_dot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivDocIcon"
+        app:layout_constraintTop_toBottomOf="@+id/fileName"
+        tools:text="category" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:textSize="12sp"
+        app:drawableStartCompat="@drawable/ic_dot"
+        app:layout_constraintStart_toEndOf="@+id/categoryLabel"
+        app:layout_constraintTop_toTopOf="@+id/categoryLabel"
+        tools:text="01-04-2019 22:10" />
 
-            <TextView
-                android:id="@+id/categoryLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/ic_dot"
-                android:drawablePadding="2dp"
-                android:paddingRight="10dp"
-                android:text="category"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/timeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/ic_dot"
-                android:drawablePadding="2dp"
-                android:paddingLeft="10dp"
-                android:text="01-04-2019 22:10"
-                android:textSize="12sp" />
-
-
-            <TextView
-                android:id="@+id/pageCount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/ic_dot"
-                android:drawablePadding="2dp"
-                android:paddingLeft="10dp"
-                android:text="2 Pages"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/pageCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_dot"
+        android:drawablePadding="4dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/timeLabel"
+        app:layout_constraintTop_toTopOf="@+id/timeLabel"
+        tools:text="2 Pages" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

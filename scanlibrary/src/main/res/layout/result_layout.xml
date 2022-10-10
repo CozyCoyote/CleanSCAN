@@ -31,7 +31,7 @@
         android:orientation="horizontal"
         android:padding="@dimen/bottom_bar_padding"
         android:text="@string/scan"
-        android:textColor="@android:color/white"></Button>
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/pageNumber"
@@ -101,25 +101,16 @@
     </LinearLayout>
 
 
-    <FrameLayout
+    <ImageView
+        android:id="@+id/scannedImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/addBtn"
         android:layout_below="@id/topBar"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/scanPadding">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/scannedImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/scanPadding" />
-
-        </RelativeLayout>
-    </FrameLayout>
+        android:layout_marginStart="@dimen/scanPadding"
+        android:layout_marginTop="@dimen/scanPadding"
+        android:layout_marginEnd="@dimen/scanPadding"
+        android:layout_marginBottom="@dimen/scanPadding" />
 
 </RelativeLayout>

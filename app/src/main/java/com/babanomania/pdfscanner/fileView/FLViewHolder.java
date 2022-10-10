@@ -29,7 +29,7 @@ public class FLViewHolder extends RecyclerView.ViewHolder {
     private TextView textViewTime;
     private TextView textViewCategory;
     private TextView textPageCount;
-    private LinearLayout itemLayout;
+    private View itemLayout;
     private ActionMode.Callback actionModeCallbacks;
     private FLAdapter adapter;
     private Document documnt;
@@ -38,12 +38,12 @@ public class FLViewHolder extends RecyclerView.ViewHolder {
 
     public FLViewHolder(View itemView, ActionMode.Callback actionModeCallbacks, FLAdapter adapter ) {
         super(itemView);
-        this.categoryIcon =  itemView.findViewById(R.id.imageView);
+        this.categoryIcon =  itemView.findViewById(R.id.ivDocIcon);
         this.textViewLabel = itemView.findViewById(R.id.fileName);
         this.textViewTime = itemView.findViewById(R.id.timeLabel);
         this.textViewCategory = itemView.findViewById(R.id.categoryLabel);
         this.textPageCount = itemView.findViewById(R.id.pageCount);
-        this.itemLayout = itemView.findViewById(R.id.relativeLayout);
+        this.itemLayout = itemView;
         this.adapter = adapter;
         this.actionModeCallbacks  = actionModeCallbacks;
 

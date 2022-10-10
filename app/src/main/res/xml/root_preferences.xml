@@ -13,4 +13,18 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/setting_styling_header">
+
+        <ListPreference
+            app:icon="@drawable/ic_menu_img_quality"
+            app:defaultValue="@string/setting_theme_default"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:key="@string/setting_theme_key"
+            app:title="@string/setting_theme_title"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

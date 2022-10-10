@@ -21,6 +21,7 @@ import java.util.Date;
 /**
  * Created by jhansi on 05/04/15.
  */
+@Deprecated
 public class Utils {
 
     private Utils() {
@@ -28,47 +29,48 @@ public class Utils {
     }
 
 
-    public static Uri getUri(Context context, final Bitmap bitmap) {
+//    public static Uri getUri(Context context, final Bitmap bitmap) {
+//
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy_hh-mm-ss");
+//        String timestamp = simpleDateFormat.format(new Date());
+//
+//        final String baseDirectory =  context.getString(R.string.base_scantmp_path);
+//        String filename = "TMP_STG_" + timestamp + ".png";
+//
+//        try {
+//            String absPath = writeFile(baseDirectory, filename, new FileWritingCallbackS() {
+//                @Override
+//                public void write(FileOutputStream out) {
+//                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+//                }
+//            });
+//
+//            return Uri.parse(absPath);
+//
+//        }catch (IOException ioe){
+//            ioe.printStackTrace();
+//            return null;
+//        }
+//    }
+//
+//    @Deprecated
+//    public static Bitmap getBitmap(Context context, Uri uri) throws IOException {
+//        final File sd = Environment.getExternalStorageDirectory();
+//        File src = new File(sd, uri.getPath());
+//        //Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), Uri.parse(src.getAbsolutePath()) );
+//        Bitmap bitmap = BitmapFactory.decodeFile(src.getAbsolutePath());
+//        return bitmap;
+//    }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy_hh-mm-ss");
-        String timestamp = simpleDateFormat.format(new Date());
 
-        final String baseDirectory =  context.getString(R.string.base_scantmp_path);
-        String filename = "TMP_STG_" + timestamp + ".png";
 
-        try {
-            String absPath = writeFile(baseDirectory, filename, new FileWritingCallbackS() {
-                @Override
-                public void write(FileOutputStream out) {
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-                }
-            });
-
-            return Uri.parse(absPath);
-
-        }catch (IOException ioe){
-            ioe.printStackTrace();
-            return null;
-        }
-    }
-
-    public static Bitmap getBitmap(Context context, Uri uri) throws IOException {
-        final File sd = Environment.getExternalStorageDirectory();
-        File src = new File(sd, uri.getPath());
-        //Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), Uri.parse(src.getAbsolutePath()) );
-        Bitmap bitmap = BitmapFactory.decodeFile(src.getAbsolutePath());
-        return bitmap;
-    }
 
     public static void setLightNavigationBar(View view, Activity activity){
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            int flags = view.getSystemUiVisibility();
-            flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
-            view.setSystemUiVisibility(flags);
-            activity.getWindow().setNavigationBarColor(Color.WHITE);
-        }
+        int flags = view.getSystemUiVisibility();
+        flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+        view.setSystemUiVisibility(flags);
+        activity.getWindow().setNavigationBarColor(Color.WHITE);
     }
 
     public static String writeFile( String baseDirectory, String filename, FileWritingCallbackS callback ) throws IOException {

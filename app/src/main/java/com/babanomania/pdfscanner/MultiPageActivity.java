@@ -73,7 +73,7 @@ public class MultiPageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         Intent out = new Intent();
-        out.putExtra(ScanConstants.SCANNED_RESULT, data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT));
+        out.putExtra(ScanConstants.SCANNED_RESULT, data.getExtras().<Uri>getParcelable(ScanConstants.SCANNED_RESULT));
         out.putExtra(ScanConstants.SCAN_MORE, data.getExtras().getBoolean(ScanConstants.SCAN_MORE));
         setResult(RESULT_OK, out);
         finish();
